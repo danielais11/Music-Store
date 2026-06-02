@@ -12,7 +12,7 @@ View purchased items in a separate inventory scene
 Manage product and inventory data
 
 Features
-Product catalog
+model.Product catalog
 Shopping cart system
 Receipt generation
 Inventory management
