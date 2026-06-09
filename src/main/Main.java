@@ -17,7 +17,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../viewctrl/main.fxml"));
         Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
+        scene.getStylesheets().add(getClass().getResource("../viewctrl/style.css").toExternalForm());        primaryStage.setScene(scene);
         primaryStage.setTitle("Music-Store");
         primaryStage.show();
     }
