@@ -8,11 +8,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewctrl.Controller">
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewctrl.Controller">
 
     <top>
         <VBox alignment="CENTER" spacing="10">
-            <Label text="Music Store" styleClass="title">
+            <Button fx:id="closeButton" text="Exit" onAction="#closeWindow"/>
+            <Label styleClass="title" text="Music Store">
             <font>
                <Font name="Calibri Light" size="12.0" />
             </font></Label>
