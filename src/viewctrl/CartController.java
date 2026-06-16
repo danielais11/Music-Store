@@ -1,0 +1,67 @@
+package viewctrl;
+
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import model.Cart;
+import model.Product;
+
+import java.awt.event.ActionEvent;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class CartController implements Initializable {
+
+    private double xOffset = 0;
+    private double yOffset = 0;
+
+    @FXML
+    private ListView<Product> cartList;
+
+    private Cart cart;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        cart = new Cart();
+        cartList.getItems().addAll(cart.getProducts());
+    }
+
+    @FXML
+    public void goBack() throws IOException {
+
+        Parent root = FXMLLoader.load(getClass().getResource("../viewctrl/main.fxml"));
+        Scene scene = new Scene(root);
+        scene.setFill(Color.TRANSPARENT);
+        scene.getStylesheets().add(getClass().getResource("../viewctrl/style.css").toExternalForm());
+        Stage primaryStage = new Stage();
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Music-Store");
+        primaryStage.setResizable(false);
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
+
+
+        //Zum Draggen
+        root.setOnMousePressed((MouseEvent event2) -> {
+            xOffset = event2.getSceneX();
+            yOffset = event2.getSceneY();
+        });
+
+        // 3. Drag the stage on mouse drag
+        root.setOnMouseDragged((MouseEvent event2) -> {
+            primaryStage.setX(event2.getScreenX() - xOffset);
+            primaryStage.setY(event2.getScreenY() - yOffset);
+        });
+
+
+        primaryStage.show();
+    }
+}
