@@ -14,21 +14,22 @@
         <VBox alignment="CENTER" spacing="10">
             <Button fx:id="closeButton" text="Exit" onAction="#closeWindow"/>
             <Label styleClass="title" text="Music Store">
-            <font>
-               <Font name="Calibri Light" size="12.0" />
-            </font></Label>
+                <font>
+                    <Font name="Calibri Light" size="12.0"/>
+                </font>
+            </Label>
 
-            <TextField fx:id="searchField" promptText="Search products..." />
+            <TextField fx:id="searchField" promptText="Search products..."/>
         </VBox>
     </top>
 
     <center>
-        <ListView fx:id="productList" prefHeight="400.0" prefWidth="295.0" />
+        <ListView fx:id="productList" prefHeight="400.0" prefWidth="295.0"/>
     </center>
 
     <bottom>
-        <Button text="Add to Cart" />
-                <!-- onAction="#handleAddToCart"/>-->
+        <Button text="Add to Cart"/>
+        <!-- onAction="#handleAddToCart"/>-->
     </bottom>
 
 </BorderPane>
