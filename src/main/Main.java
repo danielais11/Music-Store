@@ -1,4 +1,5 @@
 package main;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,7 +25,8 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("../viewctrl/main.fxml"));
         Scene scene = new Scene(root);
         scene.setFill(Color.TRANSPARENT);
-        scene.getStylesheets().add(getClass().getResource("../viewctrl/style.css").toExternalForm());        primaryStage.setScene(scene);
+        scene.getStylesheets().add(getClass().getResource("../viewctrl/style.css").toExternalForm());
+        primaryStage.setScene(scene);
         primaryStage.setTitle("Music-Store");
         primaryStage.setResizable(false);
         primaryStage.initStyle(StageStyle.TRANSPARENT);

@@ -11,7 +11,7 @@
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="viewctrl.CartController">
 
-    <Label text="Shopping Cart"/>
+    <Label styleClass="title" text="Shopping Cart"/>
 
     <ListView fx:id="cartList"/>
 

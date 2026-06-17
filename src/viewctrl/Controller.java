@@ -1,5 +1,6 @@
 package viewctrl;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,7 +16,6 @@ import javafx.stage.StageStyle;
 import model.Product;
 import model.ProductCatalog;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -49,30 +49,28 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    public void openShoppingCart() throws IOException {
+    public void openShoppingCart(ActionEvent event) throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("../viewctrl/shopping-cart.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("shopping-cart.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
-        Stage stage = new Stage();
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         scene.setFill(Color.TRANSPARENT);
-        scene.getStylesheets().add(getClass().getResource("../viewctrl/style.css").toExternalForm());
 
 
         stage.setTitle("Shopping-Cart");
         stage.setResizable(false);
-        stage.initStyle(StageStyle.TRANSPARENT);
 
 
-
-        root.setOnMousePressed((MouseEvent event) -> {
-            xOffset = event.getSceneX();
-            yOffset = event.getSceneY();
+        root.setOnMousePressed((MouseEvent event1) -> {
+            xOffset = event1.getSceneX();
+            yOffset = event1.getSceneY();
         });
 
         // 3. Drag the stage on mouse drag
-        root.setOnMouseDragged((MouseEvent event) -> {
-            stage.setX(event.getScreenX() - xOffset);
-            stage.setY(event.getScreenY() - yOffset);
+        root.setOnMouseDragged((MouseEvent event1) -> {
+            stage.setX(event1.getScreenX() - xOffset);
+            stage.setY(event1.getScreenY() - yOffset);
         });
 
         stage.setScene(scene);
