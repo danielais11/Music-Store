@@ -26,7 +26,7 @@ public class Main extends Application {
         Scene scene = new Scene(root);
         scene.setFill(Color.TRANSPARENT);
         scene.getStylesheets().add(getClass().getResource("../viewctrl/style.css").toExternalForm());
-        primaryStage.setScene(scene);
+
         primaryStage.setTitle("Music-Store");
         primaryStage.setResizable(false);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
@@ -44,7 +44,7 @@ public class Main extends Application {
             primaryStage.setY(event.getScreenY() - yOffset);
         });
 
-
+        primaryStage.setScene(scene);
         primaryStage.show();
     }
 }

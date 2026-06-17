@@ -7,12 +7,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import model.Cart;
 import model.Product;
 import model.ProductCatalog;
 
@@ -31,13 +34,13 @@ public class Controller implements Initializable {
 
     private ProductCatalog catalog;
 
+
     @FXML
     private Button closeButton;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         catalog = new ProductCatalog();
-
         productList.getItems().addAll(catalog.getProducts());
 
     }
@@ -75,6 +78,34 @@ public class Controller implements Initializable {
 
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    public void addToCart() {
+
+        Product selected = productList.getSelectionModel().getSelectedItem();
+
+
+        if (selected != null) {
+
+            Cart.getInstance().addProduct(selected);
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Added to Cart");
+            alert.setHeaderText(null);
+            alert.initStyle(StageStyle.TRANSPARENT);
+            alert.setContentText(selected.getName() + " was added to your shopping cart.");
+
+
+            DialogPane dialogPane = alert.getDialogPane();
+            dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+
+            dialogPane.getStyleClass().add("myDialog");
+
+            dialogPane.getScene().setFill(Color.TRANSPARENT);
+
+            alert.showAndWait();
+        }
     }
 
 

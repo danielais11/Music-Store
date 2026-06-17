@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
@@ -24,15 +25,18 @@ public class CartController implements Initializable {
     private double xOffset = 0;
     private double yOffset = 0;
 
+
     @FXML
     private ListView<Product> cartList;
 
-    private Cart cart;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        cart = new Cart();
-        cartList.getItems().addAll(cart.getProducts());
+
+
+        cartList.getItems().addAll(Cart.getInstance().getProducts());
+
+        cartList.setPlaceholder(new Label("Your cart is currently empty."));
     }
 
     @FXML
@@ -64,4 +68,18 @@ public class CartController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
+
+    @FXML
+    public void removeProduct() {
+
+        Product selected = cartList.getSelectionModel().getSelectedItem();
+
+        if (selected != null) {
+            Cart.getInstance().removeProduct(selected);
+            cartList.getItems().remove(selected);
+        }
+
+    }
+
 }
