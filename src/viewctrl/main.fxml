@@ -30,7 +30,7 @@
 
     <bottom>
         
-        <Button text="Add to Cart"/> <!--onAction="#handleAddToCart"/>-->
+        <Button text="Add to Cart" onAction="#addToCart"/>
     </bottom>
 
 </BorderPane>
