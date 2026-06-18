@@ -29,15 +29,20 @@ public class CartController implements Initializable {
     @FXML
     private ListView<Product> cartList;
 
+    @FXML
+    private Label totalLabel;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
 
+        cartList.setPlaceholder(new Label("Your cart is currently empty."));
         cartList.getItems().addAll(Cart.getInstance().getProducts());
 
-        cartList.setPlaceholder(new Label("Your cart is currently empty."));
-    }
+            updateTotal();
+        }
+
 
     @FXML
     public void goBack(ActionEvent event) throws IOException {
@@ -78,8 +83,35 @@ public class CartController implements Initializable {
         if (selected != null) {
             Cart.getInstance().removeProduct(selected);
             cartList.getItems().remove(selected);
+
+            updateTotal();
         }
 
+    }
+
+    private void updateTotal() {
+
+        double total = 0;
+
+        for (Product product : Cart.getInstance().getProducts()) {
+            total += product.getPrice();
+        }
+
+        totalLabel.setText(String.format("€ %.2f", total));
+    }
+
+    @FXML
+    public void checkout() {
+
+        if(Cart.getInstance().getProducts().isEmpty()){
+            return;
+        }
+
+        /*
+        Später:
+        Receipt erstellen
+        Inventory aktualisieren
+        */
     }
 
 }
