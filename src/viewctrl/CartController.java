@@ -15,6 +15,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.Cart;
 import model.Product;
+import model.ReceiptReader;
+import model.ReceiptWriter;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,6 +26,8 @@ public class CartController implements Initializable {
 
     private double xOffset = 0;
     private double yOffset = 0;
+
+
 
 
     @FXML
@@ -107,11 +111,8 @@ public class CartController implements Initializable {
             return;
         }
 
-        /*
-        Später:
-        Receipt erstellen
-        Inventory aktualisieren
-        */
+        ReceiptWriter.createReceipt(Cart.getInstance());
+        ReceiptReader.printReceipt();
     }
 
 }
