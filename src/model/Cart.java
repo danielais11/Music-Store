@@ -13,6 +13,10 @@ public class Cart {
     private Cart() {
     }
 
+    public void clear() {
+        products.clear();
+    }
+
     public static Cart getInstance() {
         return instance;
     }
