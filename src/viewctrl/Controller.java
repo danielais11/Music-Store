@@ -7,10 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.DialogPane;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -37,6 +34,9 @@ public class Controller implements Initializable {
 
     @FXML
     private Button closeButton;
+
+    @FXML
+    private TextField searchField;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -108,5 +108,48 @@ public class Controller implements Initializable {
         }
     }
 
+
+    @FXML
+    public void openInventory(ActionEvent event) throws IOException {
+
+        Parent root = FXMLLoader.load(getClass().getResource("inventory.fxml"));
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        scene.setFill(Color.TRANSPARENT);
+
+        stage.setTitle("Inventory");
+        stage.setResizable(false);
+
+        root.setOnMousePressed((MouseEvent event1) -> {
+            xOffset = event1.getSceneX();
+            yOffset = event1.getSceneY();
+        });
+
+        root.setOnMouseDragged((MouseEvent event1) -> {
+            stage.setX(event1.getScreenX() - xOffset);
+            stage.setY(event1.getScreenY() - yOffset);
+        });
+
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    public void searchProducts() {
+
+        String searchText = searchField.getText().toLowerCase();
+
+        productList.getItems().clear();
+
+        for (Product product : catalog.getProducts()) {
+
+            if (product.getName().toLowerCase().contains(searchText)) {
+                productList.getItems().add(product);
+            }
+        }
+    }
 
 }

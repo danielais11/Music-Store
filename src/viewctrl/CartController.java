@@ -13,10 +13,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import model.Cart;
-import model.Product;
-import model.ReceiptReader;
-import model.ReceiptWriter;
+import model.*;
+
 
 import java.io.IOException;
 import java.net.URL;
@@ -113,6 +111,15 @@ public class CartController implements Initializable {
 
         ReceiptWriter.createReceipt(Cart.getInstance());
         ReceiptReader.printReceipt();
+
+        Inventory.getInstance().addProducts(Cart.getInstance().getProducts());
+
+        Cart.getInstance().getProducts().clear();
+
+        cartList.getItems().clear();
+
+        updateTotal();
+
     }
 
 }
