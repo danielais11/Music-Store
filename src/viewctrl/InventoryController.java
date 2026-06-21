@@ -35,7 +35,7 @@ public class InventoryController {
 
         inventoryList.getItems().addAll(Inventory.getInstance().getProducts());
 
-        showInventoryByCategory();
+        //showInventoryByCategory();
     }
 
     @FXML
@@ -68,7 +68,7 @@ public class InventoryController {
         stage.show();
     }
 
-    private void showInventoryByCategory() {
+   /* private void showInventoryByCategory() {
 
         inventoryList.getItems().clear();
 
@@ -84,11 +84,10 @@ public class InventoryController {
         for (String category : categories.keySet()) {
 
             inventoryList.getItems().add(
-                    new Product("========== " + category.toUpperCase() + " ==========", 0, category)
-            );
+                    //new Product("========== " + category.toUpperCase() + " ==========", 0, category));
 
             inventoryList.getItems().addAll(categories.get(category));
         }
     }
-
+*/
 }
