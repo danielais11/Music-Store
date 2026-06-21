@@ -152,4 +152,41 @@ public class Controller implements Initializable {
         }
     }
 
+    @FXML
+    public void openDetails(ActionEvent event) throws IOException {
+
+        Product selected = productList.getSelectionModel().getSelectedItem();
+
+        if (selected == null) {
+            return;
+        }
+
+        ProductDetailsController.setSelectedProduct(selected);
+
+        Parent root = FXMLLoader.load(getClass().getResource("product-details.fxml"));
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        scene.setFill(Color.TRANSPARENT);
+
+        stage.setTitle("Product Details");
+        stage.setResizable(false);
+
+        // Fenster verschieben
+        root.setOnMousePressed((MouseEvent event1) -> {
+            xOffset = event1.getSceneX();
+            yOffset = event1.getSceneY();
+        });
+
+        root.setOnMouseDragged((MouseEvent event1) -> {
+            stage.setX(event1.getScreenX() - xOffset);
+            stage.setY(event1.getScreenY() - yOffset);
+        });
+
+        stage.setScene(scene);
+        stage.show();
+    }
+
 }

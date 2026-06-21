@@ -68,4 +68,39 @@
     -fx-text-fill: #ff1e1e;
 }
 
+/* ========================= TEXTAREA ========================= */
+.text-area {
+    -fx-background-color: #2a2a2a;
+    -fx-text-fill: #f2f2f2;
+    -fx-control-inner-background: #2a2a2a;
+    -fx-background-radius: 6;
+    -fx-border-color: #ff1e1e;
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+    -fx-font-size: 13px;
+}
 
+/* Scrollpane Background (wichtig!) */
+.text-area .content {
+    -fx-background-color: #2a2a2a;
+}
+
+/* Fokus (wenn angeklickt) */
+.text-area:focused {
+    -fx-border-color: white;
+}
+
+/* Scrollbar Styling */
+.text-area .scroll-bar:vertical,
+.text-area .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+
+.text-area .scroll-bar .thumb {
+    -fx-background-color: #ff1e1e;
+    -fx-background-radius: 5;
+}
+
+.text-area .scroll-bar .track {
+    -fx-background-color: #1e1e1e;
+}
