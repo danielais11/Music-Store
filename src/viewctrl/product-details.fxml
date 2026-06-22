@@ -15,10 +15,10 @@
 
         <Label fx:id="priceLabel" layoutX="30" layoutY="110" text="Price" />
 
-        <TextArea fx:id="descriptionArea" layoutX="30" layoutY="150" prefHeight="200" prefWidth="250" styleClass="text-area" wrapText="true" />
+        <TextArea fx:id="descriptionArea" editable="false" layoutX="30" layoutY="150" prefHeight="200" prefWidth="250" styleClass="text-area" wrapText="true" />
 
 
-        <TextArea fx:id="trackListArea" layoutX="300" layoutY="150" prefHeight="200" prefWidth="250" styleClass="text-area" wrapText="true" />
+        <TextArea fx:id="trackListArea" editable="false" layoutX="300" layoutY="150" prefHeight="200" prefWidth="250" styleClass="text-area" wrapText="true" />
 
         <Button layoutX="38.0" layoutY="360.0" onAction="#goBack" prefWidth="80" text="Back" />
     </children>

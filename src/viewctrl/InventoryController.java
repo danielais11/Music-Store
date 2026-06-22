@@ -22,8 +22,6 @@ import java.util.TreeMap;
 
 public class InventoryController {
 
-    private double xOffset = 0;
-    private double yOffset = 0;
 
     @FXML
     private ListView<Product> inventoryList;
@@ -40,33 +38,9 @@ public class InventoryController {
 
     @FXML
     public void goBack(ActionEvent event) throws IOException {
-
-        Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-        scene.setFill(Color.TRANSPARENT);
-
-
-        stage.setTitle("Music-Store");
-        stage.setResizable(false);
-
-
-        //Zum Draggen
-        root.setOnMousePressed((MouseEvent event2) -> {
-            xOffset = event2.getSceneX();
-            yOffset = event2.getSceneY();
-        });
-
-        // 3. Drag the stage on mouse drag
-        root.setOnMouseDragged((MouseEvent event2) -> {
-            stage.setX(event2.getScreenX() - xOffset);
-            stage.setY(event2.getScreenY() - yOffset);
-        });
-
-        stage.setScene(scene);
-        stage.show();
+        SceneManager.switchScene(event,"main.fxml","Music-Store");
     }
+
 
    /* private void showInventoryByCategory() {
 

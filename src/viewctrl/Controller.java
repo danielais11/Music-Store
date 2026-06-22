@@ -22,8 +22,6 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
-    private double xOffset = 0;
-    private double yOffset = 0;
 
     @FXML
     private ListView<Product> productList;
@@ -53,31 +51,7 @@ public class Controller implements Initializable {
 
     @FXML
     public void openShoppingCart(ActionEvent event) throws IOException {
-
-        Parent root = FXMLLoader.load(getClass().getResource("shopping-cart.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-        scene.setFill(Color.TRANSPARENT);
-
-
-        stage.setTitle("Shopping-Cart");
-        stage.setResizable(false);
-
-
-        root.setOnMousePressed((MouseEvent event1) -> {
-            xOffset = event1.getSceneX();
-            yOffset = event1.getSceneY();
-        });
-
-        // 3. Drag the stage on mouse drag
-        root.setOnMouseDragged((MouseEvent event1) -> {
-            stage.setX(event1.getScreenX() - xOffset);
-            stage.setY(event1.getScreenY() - yOffset);
-        });
-
-        stage.setScene(scene);
-        stage.show();
+        SceneManager.switchScene(event, "shopping-cart.fxml", "Shopping Cart");
     }
 
     @FXML
@@ -111,30 +85,7 @@ public class Controller implements Initializable {
 
     @FXML
     public void openInventory(ActionEvent event) throws IOException {
-
-        Parent root = FXMLLoader.load(getClass().getResource("inventory.fxml"));
-
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-        scene.setFill(Color.TRANSPARENT);
-
-        stage.setTitle("Inventory");
-        stage.setResizable(false);
-
-        root.setOnMousePressed((MouseEvent event1) -> {
-            xOffset = event1.getSceneX();
-            yOffset = event1.getSceneY();
-        });
-
-        root.setOnMouseDragged((MouseEvent event1) -> {
-            stage.setX(event1.getScreenX() - xOffset);
-            stage.setY(event1.getScreenY() - yOffset);
-        });
-
-        stage.setScene(scene);
-        stage.show();
+        SceneManager.switchScene(event, "inventory.fxml", "Inventory");
     }
 
     @FXML
@@ -163,30 +114,6 @@ public class Controller implements Initializable {
 
         ProductDetailsController.setSelectedProduct(selected);
 
-        Parent root = FXMLLoader.load(getClass().getResource("product-details.fxml"));
-
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-        scene.setFill(Color.TRANSPARENT);
-
-        stage.setTitle("Product Details");
-        stage.setResizable(false);
-
-        // Fenster verschieben
-        root.setOnMousePressed((MouseEvent event1) -> {
-            xOffset = event1.getSceneX();
-            yOffset = event1.getSceneY();
-        });
-
-        root.setOnMouseDragged((MouseEvent event1) -> {
-            stage.setX(event1.getScreenX() - xOffset);
-            stage.setY(event1.getScreenY() - yOffset);
-        });
-
-        stage.setScene(scene);
-        stage.show();
+        SceneManager.switchScene(event, "product-details.fxml", "Product Details");
     }
-
 }
