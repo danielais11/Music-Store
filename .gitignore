@@ -1,0 +1,25 @@
+# IntelliJ
+.idea/
+*.iml
+
+# Build output
+out/
+build/
+
+# Java
+*.class
+
+# Logs
+*.log# IntelliJ
+.idea/
+*.iml
+
+# Build output
+out/
+build/
+
+# Java
+*.class
+
+# Logs
+*.log
